@@ -23,7 +23,7 @@ class Snippets_Controller extends Base_Controller {
 
 	public function get_show($id)
     {
-        $snippet = Snippet::find($id)->first();
+        $snippet = Snippet::find($id);
         return View::make('snippet.show', $snippet->to_array());
     }
 
