@@ -1,42 +1,13 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Simply tell Laravel the HTTP verbs and URIs it should respond to. It is a
-| breeze to setup your application using Laravel's RESTful routing and it
-| is perfectly suited for building large applications and simple APIs.
-|
-| Let's respond to a simple GET request to http://example.com/hello:
-|
-|		Route::get('hello', function()
-|		{
-|			return 'Hello World!';
-|		});
-|
-| You can even respond to more than one URI:
-|
-|		Route::post(array('hello', 'world'), function()
-|		{
-|			return 'Hello World!';
-|		});
-|
-| It's easy to allow URI wildcards using (:num) or (:any):
-|
-|		Route::put('hello/(:any)', function($name)
-|		{
-|			return "Welcome, $name.";
-|		});
-|
-*/
-
-Route::get('/', function()
-{
-	return View::make('home.index');
-});
-
+// snippet Resource
+Route::get('/', array('as' => 'snippets', 'uses' => 'snippets@index'));
+Route::get('(:num)', array('as' => 'snippet', 'uses' => 'snippets@show'));
+Route::get('/, new', array('as' => 'new_snippet', 'uses' => 'snippets@new'));
+Route::get('/(:any)/edit', array('as' => 'edit_snippet', 'uses' => 'snippets@edit'));
+Route::post('/', 'snippets@create');
+Route::put('/(:any)', 'snippets@update');
+Route::delete('/(:any)', 'snippets@destroy');
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers

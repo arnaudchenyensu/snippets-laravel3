@@ -1,0 +1,1 @@
+This is the /Users/arnaud/Sites/share-snippets/application/views/snippet/edit.blade.php view
