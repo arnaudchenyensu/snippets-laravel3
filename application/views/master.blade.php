@@ -18,7 +18,6 @@
 
     <script>
         $('textarea').tabby();
-        prettyPrint();
     </script>
 
 </body>

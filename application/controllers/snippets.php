@@ -27,14 +27,23 @@ class Snippets_Controller extends Base_Controller {
         return View::make('snippet.show', $snippet->to_array());
     }
 
+    public function get_fork($id)
+    {
+        $snippet = Snippet::find($id);
+
+        if(!$snippet) return Redirect::to_route('new_snippet');
+        return $this->get_new($snippet->snippet);
+    }
+
 	public function get_edit()
     {
 
     }
 
-	public function get_new()
+	public function get_new($default_snippet = '')
     {
-        return View::make('snippet.new');
+        return View::make('snippet.new')
+            ->with('snippet', $default_snippet);
     }
 
 	public function put_update()

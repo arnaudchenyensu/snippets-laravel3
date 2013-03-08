@@ -3,6 +3,7 @@
 // snippet Resource
 Route::get('/', array('as' => 'snippets', 'uses' => 'snippets@index'));
 Route::get('(:num)', array('as' => 'snippet', 'uses' => 'snippets@show'));
+Route::get('(:num)/fork', array('as' => 'fork_snippet', 'uses' => 'snippets@fork'));
 Route::get('/, new', array('as' => 'new_snippet', 'uses' => 'snippets@new'));
 Route::get('/(:any)/edit', array('as' => 'edit_snippet', 'uses' => 'snippets@edit'));
 Route::post('/', 'snippets@create');
