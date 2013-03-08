@@ -4,7 +4,15 @@
 
     {{ Form::open('/') }}
         {{ Form::textarea('snippet', $snippet)}}
-        <a href="{{ URL::to_route('new_snippet') }}"> Start Over </a>
-        {{ Form::submit('save')}}
+        <div class="btn-group nav">
+            <a href="{{ URL::to_route('new_snippet') }}" class="btn btn-danger"> Start Over </a>
+            {{ Form::submit('save', array('class' => 'btn btn-success'))}}
+        </div>
     {{ Form::close() }}
+@endsection
+
+@section('scripts')
+    <script>
+        $('textarea').height( $(window).height() - 50);
+    </script>
 @endsection
